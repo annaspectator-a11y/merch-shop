@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16 # Use the official PostgreSQL image, version 16
+    restart: always
+    environment:
+      POSTGRES_DB: postgres # Name of the database to create
+      POSTGRES_USER: admin # Username for the database
+      POSTGRES_PASSWORD: admin # Password for the database user
+    ports:
+      - "6432:5432" # Map host port 5432 to container port 5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data # Mount a named volume for data persistence
+
+volumes:
+  pgdata: # Define the named volume
