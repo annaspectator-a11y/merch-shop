@@ -1,5 +1,5 @@
-module github.com/GIT_USER_ID/GIT_REPO_ID
+module github.com/annaspectator-a11y/merch-shop
 
 go 1.18
 
-require github.com/gorilla/mux v1.8.1
+require github.com/gorilla/mux v1.8.0

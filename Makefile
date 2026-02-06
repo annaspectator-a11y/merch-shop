@@ -13,4 +13,9 @@ migrate_down:
 	goose -dir migrations postgres "postgres://admin:admin@localhost:6432/postgres?sslmode=disable" reset
 
 generate_avito_client:
-	openapi-generator  generate -g go-server -i specs/avito.json  --additional-properties=sourceFolder=generated
+	openapi-generator generate \
+		-g go-server \
+		-i specs/avito.json \
+		--additional-properties=sourceFolder=generated \
+		--git-user-id annaspectator-a11y \
+		--git-repo-id merch-shop

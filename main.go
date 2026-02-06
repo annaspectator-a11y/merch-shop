@@ -14,7 +14,7 @@ import (
 	"log"
 	"net/http"
 
-	openapi "github.com/GIT_USER_ID/GIT_REPO_ID/generated"
+	openapi "github.com/annaspectator-a11y/merch-shop/generated"
 )
 
 func main() {
