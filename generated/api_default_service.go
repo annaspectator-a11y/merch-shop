@@ -14,6 +14,8 @@ import (
 	"context"
 	"net/http"
 	"errors"
+	"github.com/go-ozzo/ozzo-validation"
+	"fmt"
 )
 
 // DefaultAPIService is a service that implements the logic for the DefaultAPIServicer
@@ -89,6 +91,15 @@ func (s *DefaultAPIService) ApiBuyItemGet(ctx context.Context, item string) (Imp
 
 // ApiAuthPost - Аутентификация и получение JWT-токена.
 func (s *DefaultAPIService) ApiAuthPost(ctx context.Context, body AuthRequest) (ImplResponse, error) {
+	
+	err := validation.ValidateStruct (&body,
+		validation.Field(&body.Username, validation.Required, validation.Length(1, 100)),
+		validation.Field(&body.Password, validation.Required, validation.Length(1, 100)),
+	)
+	if err != nil {
+		return Response(http.StatusBadRequest, ErrorResponse{Errors: fmt.Errorf("username or password empty: %w", err).Error()}), nil
+	}
+
 	// TODO - update ApiAuthPost with the required logic for this service method.
 	// Add api_default_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
